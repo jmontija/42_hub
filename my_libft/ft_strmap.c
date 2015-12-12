@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 21:11:50 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/11 21:11:53 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/12 14:15:44 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/12 14:15:46 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striter(char *s, void (*f)(char *))
+char	*ft_strmap(char const *s, char (*f)(char))
 {
 	int i;
+	char const *map
 
-	i = 0;
-	while (s[i] != '\0')
+	map = ft_strdup(*s)
+	if (map)
 	{
-		f(s[i]);
-		i++;
+		while (map[i] != '\0')
+		{
+			f(map[i]);
+			i++;
+		}
 	}
-
 }

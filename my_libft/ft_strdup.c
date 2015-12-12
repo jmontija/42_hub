@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 21:11:50 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/11 21:11:53 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/12 14:19:53 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/12 14:19:55 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striter(char *s, void (*f)(char *))
+char	*ft_strdup(const char *s1)
 {
 	int i;
+	char *dup;
 
 	i = 0;
-	while (s[i] != '\0')
+	dup = (char *)malloc(sizeof(*dup) * ft_strlen(s1) + 1)
+	while (s1[i] != '\0')
 	{
-		f(s[i]);
+		dup[i] = s1[i];
 		i++;
 	}
-
+	s1[i] = '\0';
+	return (dup)
 }

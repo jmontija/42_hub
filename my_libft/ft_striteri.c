@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striter(char *s, void (*f)(char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
-		f(s[i]);
+		f(i, s[i]);
 		i++;
 	}
 
