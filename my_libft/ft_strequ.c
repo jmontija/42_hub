@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 14:15:44 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 14:15:46 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/12 15:34:37 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/12 15:34:40 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strmap(char const *s, char (*f)(char))
+int		ft_strequ(char const *s1, char const *s2)
 {
 	int i;
-	char const *map;
 
-	map = ft_strdup(*s)
-	if (map)
+	i = 0;
+	while (s1[i] == s2[i])
 	{
-		while (map[i] != '\0')
-		{
-			f(map[i]);
-			i++;
-		}
+		if s1[i] != s2[i]
+			return (0);
+		i++;
 	}
-	return (map);
+	return (1);
 }

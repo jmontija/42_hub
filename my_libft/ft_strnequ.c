@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 14:15:44 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 14:15:46 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/12 15:40:30 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/12 15:40:32 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strmap(char const *s, char (*f)(char))
-{
-	int i;
-	char const *map;
+#include "libft.h"
 
-	map = ft_strdup(*s)
-	if (map)
-	{
-		while (map[i] != '\0')
-		{
-			f(map[i]);
-			i++;
-		}
-	}
-	return (map);
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	while (i < n && (s1[i] != '\0' && s2[i] != '\0'))
+		i++;
+	if (s1[i] == s2[i])	
+		return (1);
+	else
+		return (0);
 }

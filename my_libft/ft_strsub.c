@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 14:15:44 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 14:15:46 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/12 15:50:09 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/12 15:50:11 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strmap(char const *s, char (*f)(char))
-{
-	int i;
-	char const *map;
+#include "libft.h"
 
-	map = ft_strdup(*s)
-	if (map)
-	{
-		while (map[i] != '\0')
-		{
-			f(map[i]);
-			i++;
-		}
-	}
-	return (map);
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	unsigned int i;
+	char const *cpy;
+
+	cpy = ft_strnew(len);
+	i = 0;
+	if (cpy)
+		return (ft_memcpy(cpy, s + start, len));
+	else
+		return (NULL);
 }
