@@ -10,10 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*fresh;
 
-	fresh = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
-	
+	if (s1 && s2)
+	{
+		fresh = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+		if (fresh)
+		{
+			ft_strcpy(fresh, (char *)s1);
+			ft_strcat(fresh, s2);
+			return (fresh);
+		}
+	}
+	return (NULL);
+}
+
+int		main(void)
+{
+	char str1[] = "first";
+	char str2[] = "second";
+
+	printf("%s\n", ft_strjoin(str1, str2));
+	return (0);
 }

@@ -20,5 +20,9 @@
 # include <unistd.h>
 
 size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char *restrict dst, char *restrict src);
+char	*ft_strnew(size_t size);
+char	*ft_strcat(char *restrict s1, const char *restrict s2);
+char	*ft_strncat(char	*restrict s1, const char *restrict s2, size_t n);
 
 #endif

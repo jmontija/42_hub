@@ -26,17 +26,17 @@ char	*ft_strncat(char	*restrict s1, const char *restrict s2, size_t n)
 			s1[i + len] = s2[i];
 			i++;
 		}
-		s1[i] = '\0';
+		s1[i + len] = '\0';
 		return (s1);
 	}
-	return(NULL)
+	return(NULL);
 }
 
-int		main(void)
+/*int		main(void)
 {
 	char	src[50] = "OLA";
 	char	dst[50] = "HELLO";
 
 	printf("%s\n", ft_strncat(dst, src, 10));
 	return (0);
-}
+}*/
