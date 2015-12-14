@@ -12,7 +12,7 @@
 
 void	*ft_memalloc(size_t size)
 {
-	char *zone;
+	void *zone;
 
 	zone = (char *)malloc(sizeof(*zone) * size);
 	if (zone == NULL)
