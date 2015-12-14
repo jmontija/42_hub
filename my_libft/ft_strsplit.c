@@ -18,7 +18,7 @@ void	ft_fill(char const *s, char c, size_t idx, char *split)
 	size_t letter;
 	size_t i;
 
-	word = 1;
+	word = 0;
 	letter = 0;
 	i = 0;
 	while (s[i] != '\0')
@@ -55,13 +55,13 @@ size_t	ft_letter(char const *s, char c,size_t idx)
 	{
 		if (s[i] != c)
 		{
-			word++;
 			while (s[i] != c)
 			{
 				if (word == idx)
 					letter++;
 				i++;
 			}
+			word++;
 		}
 		i++;
 	}
@@ -94,19 +94,21 @@ char	**ft_strsplit(char const *s, char c)
 	char **split;
 	size_t word;
 	size_t letter;
+	size_t i;
 
+	i = 0;
 	if (s)
 	{
 		word = ft_wordnb(s, c);
 		split = (char **)malloc(sizeof(char *) * word);
-		//printf("%zu words\n", word);
-		while (word)
+		while (i < word)
 		{
-			letter = ft_letter(s, c, word);
-			split[word - 1] = (char *)malloc(sizeof(char) * (letter + 1));
-			ft_fill(s, c, word, split[word - 1]);
-			printf("%zu words\n", word - 1);
-			word--;
+			letter = ft_letter(s, c, i);
+			split[i] = (char *)malloc(sizeof(char) * (letter + 1));
+			if (split[i])
+				ft_fill(s, c, i, split[i]);
+			printf("%zu words\n", i);
+			i++;
 		}
 	}
 	return (split);
@@ -116,9 +118,7 @@ int		main(void)
 {
 	char tosplit[] = "yep///ola//joe/comment///////jarrrive//";
 	char **split;
-	int i;
 
-	i = 0;
 	split = ft_strsplit(tosplit, '/');
 
 		printf("%s\n", split[0]);
@@ -127,7 +127,7 @@ int		main(void)
 		printf("%s\n", split[3]);
 		printf("%s\n", split[4]);
 		printf("%s\n", split[5]);
-		printf("%s\n", split[6]);
+		//printf("%s\n", split[6]);
 	
 	return (0);
 }
