@@ -17,11 +17,14 @@ char	*ft_strcpy(char *restrict dst, char *restrict src)
 	int i;
 
 	i = 0;
-	while (src[i] != '\0')
+	if (dst && src)
 	{
-		dst[i] = src[i];
-		i++;
+		while (src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (dst);
 }

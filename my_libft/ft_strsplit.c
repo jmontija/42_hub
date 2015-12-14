@@ -97,6 +97,7 @@ char	**ft_strsplit(char const *s, char c)
 	size_t i;
 
 	i = 0;
+	split = NULL;
 	if (s)
 	{
 		word = ft_wordnb(s, c);
@@ -114,7 +115,7 @@ char	**ft_strsplit(char const *s, char c)
 	return (split);
 }
 
-int		main(void)
+/*int		main(void)
 {
 	char tosplit[] = "yep///ola//joe/comment///////jarrrive//";
 	char **split;
@@ -130,4 +131,4 @@ int		main(void)
 		//printf("%s\n", split[6]);
 	
 	return (0);
-}
+}*/

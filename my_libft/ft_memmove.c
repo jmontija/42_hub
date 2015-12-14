@@ -29,11 +29,11 @@
  	return (dst);
  }
 
-int		main(void)
+/*int		main(void)
 {
 	char dst[] = "old";
 	const char src[] = "newoeod";
 
 	printf("%s\n", ft_memmove(dst, src, 6));
 	return (0);
-}
+}*/

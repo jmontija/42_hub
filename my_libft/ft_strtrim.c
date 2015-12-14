@@ -35,9 +35,9 @@ char	*ft_strtrim(char const *s)
 	return (str);
 }
 
-int		main(void)
+/*int		main(void)
 {
 	char joe[] = "	      eyao         ";
 	printf("%s\n", ft_strtrim(joe));
 	return (0);
-}
+}*/

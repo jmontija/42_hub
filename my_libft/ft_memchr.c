@@ -29,10 +29,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (NULL);
 }
 
-int		main(void)
+/*int		main(void)
 {
 	const char str[50] = "play$theWorld";
 
 	printf("%s\n", ft_memchr(str, '$', 10));
 	return (0);
-}
+}*/

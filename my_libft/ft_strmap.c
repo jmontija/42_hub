@@ -10,12 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strmap(char const *s, char (*f)(char))
 {
 	int i;
-	char const *map;
+	char 	*map;
 
-	map = ft_strdup(*s)
+	i = 0;
+	map = ft_strdup(s);
 	if (map)
 	{
 		while (map[i] != '\0')
