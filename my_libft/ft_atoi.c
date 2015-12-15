@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 14:19:53 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 14:19:55 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/15 18:14:37 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/15 18:14:39 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int		ft_atoi(const char *str)
 {
+	int nbr;
+	int neg;
 	int i;
-	char *dup;
 
+	neg = 1;
+	nbr = 0;
 	i = 0;
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	while (s1[i] != '\0')
+	while (str[i] && (str[i] == ' ' || str[i] == '\n' || str[i] == '\r' ||
+		str[i] == '\t' || str[i] == '\f' || str[i] == '\v'))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		dup[i] = s1[i];
+		neg = -1;
 		i++;
 	}
-	dup[i] = '\0';
-	
-	return (dup);
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		nbr = nbr * 10;
+		nbr = nbr + (str[i]) - 48;
+		i++;
+	}
+	return (neg * nbr);
 }

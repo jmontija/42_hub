@@ -1,30 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 14:19:53 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 14:19:55 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/15 20:01:36 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/15 20:01:38 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+static	int		ft_jecherche(char *s1, char *s2)
 {
 	int i;
-	char *dup;
+
+	i = -1;
+	while (s2[++i])
+		if (s1[i] != s2[i])
+			return (0);
+	return (1);
+}
+
+char	*ft_strstr(const char *s1, const char *s2)
+{
+
+	int i;
+	char *str1;
+	char *str2;
 
 	i = 0;
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	while (s1[i] != '\0')
+	str1 = (char *)s1;
+	str2 = (char *)s2;
+	if (*str2 == '\0')
+		return (str1);
+	if (str1)
 	{
-		dup[i] = s1[i];
-		i++;
+		while (str1[i] != '\0')
+		{
+			if (ft_jecherche(str1 + i, str2))
+				return (str1 + i);
+			i++;
+		}
 	}
-	dup[i] = '\0';
-	
-	return (dup);
+	return (NULL);
 }

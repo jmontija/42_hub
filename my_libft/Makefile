@@ -54,6 +54,13 @@ SRC += ft_strmapi.c
 SRC += ft_strjoin.c
 SRC += ft_strtrim.c
 SRC += ft_strsplit.c
+SRC += ft_atoi.c
+SRC += ft_strchr.c
+SRC += ft_strlcat.c
+SRC += ft_strncpy.c
+SRC += ft_strrchr.c
+SRC += ft_strstr.c
+SRC += ft_strnstr.c
 
 SRCO = $(SRC:.c=.o)
 CC = gcc
