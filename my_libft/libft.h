@@ -6,7 +6,7 @@
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 17:24:59 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/10 17:25:04 by jmontija         ###   ########.fr       */
+/*   Updated: 2015/12/15 17:55:59 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 
 void				*ft_memalloc(size_t size);
-void				*ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t n);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
@@ -54,8 +54,8 @@ int					ft_tolower(int c);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_lennospace(char const *s);
 size_t				ft_strlen(const char *s);
-char				*ft_strcat(char *restrict s1, const char *restrict s2);
-char				*ft_strcpy(char *restrict dst, char *restrict src);
+char				*ft_strcat(char *s1, const char *s2);
+char				*ft_strcpy(char *dst, char *src);
 char				*ft_strdup(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strmap(char const *s, char (*f)(char));

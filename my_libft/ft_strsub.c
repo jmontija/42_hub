@@ -9,7 +9,7 @@
 /*   Updated: 2015/12/12 15:50:11 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include "libft.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
@@ -23,4 +23,6 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 		return (ft_memcpy(cpy, s + start, len));
 	else
 		return (NULL);
+		return (NULL);
 }
+*/

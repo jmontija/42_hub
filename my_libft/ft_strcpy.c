@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strcpy(char *restrict dst, char *restrict src)
+char	*ft_strcpy(char *dst, char *src)
 {
 	int i;
 
