@@ -9,10 +9,10 @@
 /*   Updated: 2015/12/12 15:50:11 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+/*char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	unsigned int i;
 	char const *cpy;
@@ -26,3 +26,13 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 		return (NULL);
 }
 */
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*result;
+
+	result = ft_strnew(len);
+	if (s && result && ft_strlen(s) >= len)
+		ft_strncpy(result, s + start, len);
+	return (result);
+}

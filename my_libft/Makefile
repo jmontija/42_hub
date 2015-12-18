@@ -61,6 +61,9 @@ SRC += ft_strncpy.c
 SRC += ft_strrchr.c
 SRC += ft_strstr.c
 SRC += ft_strnstr.c
+SRC += ft_itoa.c
+SRC += ft_strsub.c
+SRC += ft_lennospace.c
 
 SRCO = $(SRC:.c=.o)
 CC = gcc

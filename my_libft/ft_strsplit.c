@@ -65,7 +65,7 @@ size_t	ft_letter(char const *s, char c,size_t idx)
 		}
 		i++;
 	}
-	printf("%zu letter\n", letter);
+	//printf("%zu letter\n", letter);
 	return (letter);
 }
 
@@ -108,7 +108,7 @@ char	**ft_strsplit(char const *s, char c)
 			split[i] = (char *)malloc(sizeof(char) * (letter + 1));
 			if (split[i])
 				ft_fill(s, c, i, split[i]);
-			printf("%zu words\n", i);
+			//printf("%zu words\n", i);
 			i++;
 		}
 	}
