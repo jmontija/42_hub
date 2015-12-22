@@ -18,12 +18,12 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char 	*map;
 
 	i = 0;
-	map = ft_strdup(s);
+	map = ft_strnew(ft_strlen(s));
 	if (map)
 	{
-		while (map[i] != '\0')
+		while (s[i] != '\0')
 		{
-			f(map[i]);
+			map[i] = f(s[i]);
 			i++;
 		}
 	}

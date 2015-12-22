@@ -11,40 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	unsigned int i;
-	char 	*map;
-
-	i = 0;
-	map = ft_strdup(s);
-	if (map)
-	{
-		while (map[i] != '\0')
-		{
-			f(i, map[i]);
-			i++;
-		}
-	}
-	return (map);
-}*/
 	
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	char			*s2;
+	char 	*map;
 
 	i = 0;
-	s2 = NULL;
-	if (s && f)
+	map = ft_strnew(ft_strlen(s));
+	if (map)
 	{
-		s2 = ft_strdup(s);
-		while (s[i])
+		while (s[i] != '\0')
 		{
-			s2[i] = f(i, (char)s[i]);
+			map[i] = f(i, s[i]);
 			i++;
 		}
 	}
-	return (s2);
+	return (map);
 }
