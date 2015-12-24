@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 17:24:59 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/15 17:55:59 by jmontija         ###   ########.fr       */
+/*   Updated: 2015/12/23 18:24:25 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+t_list 				*ft_lstnew(void const *content, size_t content_size);
+t_list 				*ft_lstmap(t_list *lst, t_list * (*f)(t_list *elem));
+void 				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void 				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void				ft_lstadd(t_list **alst, t_list *new);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
@@ -79,4 +85,5 @@ char				*ft_strtrim(char const *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_itoa(int n);
+
 #endif

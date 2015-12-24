@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmontija <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 17:28:13 by jmontija          #+#    #+#              #
-#    Updated: 2015/12/10 17:28:21 by jmontija         ###   ########.fr        #
+#    Updated: 2015/12/23 18:24:33 by jmontija         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,12 @@ SRC += ft_strnstr.c
 SRC += ft_itoa.c
 SRC += ft_strsub.c
 SRC += ft_lennospace.c
+SRC += ft_lstnew.c
+SRC += ft_lstdelone.c
+SRC += ft_lstdel.c
+SRC += ft_lstadd.c
+SRC += ft_lstiter.c
+SRC += ft_lstmap.c
 
 SRCO = $(SRC:.c=.o)
 CC = gcc

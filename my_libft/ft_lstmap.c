@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 15:49:55 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/23 17:18:17 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/23 18:02:56 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/23 19:17:14 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+t_list * ft_lstmap(t_list *lst, t_list * (*f)(t_list *elem))
 {
-	size_t i;
-	unsigned char *str;
+	t_list	*tmp;
+	t_list	*fresh;
 
-	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
+	if (!lst || !f)
+		return (NULL);
+	fresh = f(lst);
+	tmp = fresh;
+	lst = lst->next;
+	while (lst)
 	{
-		if (str[i] == (unsigned char)c)
-			return (str + i);
-		i++;
-
+		tmp->next = f(lst);
+		tmp = tmp->next;
+		lst = lst->next;
 	}
-	return (NULL);
+	return (fresh);
 }
-
-/*int		main(void)
-{
-	const char str[50] = "play$theWorld";
-
-	printf("%s\n", ft_memchr(str, '$', 10));
-	return (0);
-}*/

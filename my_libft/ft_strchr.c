@@ -19,12 +19,15 @@ char	*ft_strchr(const char *s, int c)
 	char	*str;
 	char	occ;
 
-	i = -1;
+	i = 0;
 	len = ft_strlen(s);
 	str = (char *)s;
 	occ = (char)c;
-	while (++i <= len)
+	while (i <= len)
+	{
 		if (str[i] == occ)
 			return (str + i);
+		i++;
+	}
 	return (NULL);
 }

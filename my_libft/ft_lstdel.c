@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 15:49:55 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/23 17:18:17 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/23 05:04:41 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/23 05:05:45 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	size_t i;
-	unsigned char *str;
-
-	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
-	{
-		if (str[i] == (unsigned char)c)
-			return (str + i);
-		i++;
-
-	}
-	return (NULL);
+	if (!alst)
+		return ;
+	if ((*alst)->next)
+		ft_lstdel(&((*alst)->next), del);
+	ft_lstdelone(alst, del);
 }
-
-/*int		main(void)
-{
-	const char str[50] = "play$theWorld";
-
-	printf("%s\n", ft_memchr(str, '$', 10));
-	return (0);
-}*/

@@ -73,20 +73,20 @@ unsigned int ft_wordnb(char const *s, char c)
 	unsigned int word;
 	unsigned int i;
 
-	word = 0;
+	word 	= 0;
+	i 		= 0;
 	if (s && c)
 	{
 		if (s[0] && s[0] != c)
 			word = 1;
 		else
 			word = 0;
-		i = 1;
+		i++;
 		while (s[0] && s[i] != '\0')
 		{
 			if (s[i - 1] == c && s[i] != c)
 				word++;
 			i++;
-			printf("%d\n", s[0]);
 		}
 	}
 	return (word);

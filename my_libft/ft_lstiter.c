@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 15:49:55 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/23 17:18:17 by jmontija         ###   ########.fr       */
+/*   Created: 2015/12/23 17:52:36 by jmontija          #+#    #+#             */
+/*   Updated: 2015/12/23 18:40:09 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	size_t i;
-	unsigned char *str;
+	t_list *tmp;
 
-	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
+	if (lst && f)
 	{
-		if (str[i] == (unsigned char)c)
-			return (str + i);
-		i++;
-
+		tmp = lst->next;
+		f(lst);
+		ft_lstiter(tmp, f);
 	}
-	return (NULL);
+	return;
 }
 
-/*int		main(void)
-{
-	const char str[50] = "play$theWorld";
-
-	printf("%s\n", ft_memchr(str, '$', 10));
-	return (0);
-}*/
