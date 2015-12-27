@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillstart.c                                        :+:      :+:    :+:   */
+/*   mainfill.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 16:46:43 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/27 17:42:07 by jmontija         ###   ########.fr       */
+/*   Updated: 2015/12/27 20:00:01 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-	ft_putstr("YEEJLEIODKL");
+	launcher(argc, argv);
 	return (0);
 }

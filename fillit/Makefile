@@ -6,7 +6,7 @@
 #    By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 17:28:13 by jmontija          #+#    #+#              #
-#    Updated: 2015/12/27 17:54:13 by jmontija         ###   ########.fr        #
+#    Updated: 2015/12/27 20:00:54 by jmontija         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
-SRCS			=	srcs/fillstart.c
+SRCS			+=	srcs/mainfill.c
+SRCS			+=	srcs/startfill.c
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)
 
