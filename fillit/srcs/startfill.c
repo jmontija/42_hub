@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 19:15:21 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/28 03:00:15 by jmontija         ###   ########.fr       */
+/*   Updated: 2015/12/29 04:56:27 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_orc(char *file)
 	return (pack);
 }
 
-int		form_count(char *pack)
+int		tetris_count(char *pack)
 {
 	int	i;
 	int count;
@@ -45,33 +45,64 @@ int		form_count(char *pack)
 	return (count);
 }
 
-/*void	form_define(char *pack, form_nb)
+void	tetris_fill(char *pack, char **tetris, int *p)
 {
 	int i;
-	int diezes;
-	int		**form_coord;
+	int j;
 
+	//tetris[0][4][5]
+	printf("%d\n", *p);
 	i = -1;
-	diezes = 0;
-
-	form_coord = (int *)malloc(sizeof(int) * form_nb);
-	if (!(form_coord))
+	j = -1;	
+	if (!tetris && !pack)
 		return ;
-	while (pack[++i])
-	{	
-		if (pack[i] == '\n' && (i + 1 - form_idx) % 5 != 0)
-			form_idx++;
-		if (pack[i] == '#')
+	while (++i < 4)
+	{
+		while (++j < 5)
 		{
-			while (pack[i] == '#')
-				diezes++;
+			if (tetris[i][0] != '\n')
+			{
+				tetris[i][j] = pack[*p];
+				*p += 1;
+			}
+			else
+			{
+				*p += 1;
+				break;
+			}
 		}
-		form_coord[form_idx][0] = diezes;
+		j = -1;
 	}
-}*/
+	tetris[i] = NULL;
+	*p += 1; // pour le '\n' entre les tetriminos;
+	printf("%d\n", *p);
+}
+
+char	***tetris_pack(char *pack, char ***tetris)
+{
+	int i;
+	int j;
+	int p;
+
+	//tetris[0][4][5]
+	
+	i = -1;
+	j = -1;
+	p = 0;
+	while (++i < 5)
+	{
+		tetris[i] = (char **)malloc(sizeof(char *) * 4);
+		while (++j < 5)
+			tetris[i][j] = (char *)malloc(sizeof(char) * 5);
+		tetris_fill(pack, tetris[i], &p);
+		j = -1;
+	}
+	return (tetris);
+}
 
 void	launcher(int argc, char **argv)
 {
+	char	***tetris;
 	char 	*pack;
 	int		form_nb;
 
@@ -80,8 +111,17 @@ void	launcher(int argc, char **argv)
 		ft_putstr("error\n");
 		return ;
 	}
-	form_nb = form_count(pack);
+	form_nb = tetris_count(pack);
+	tetris = (char ***)malloc(sizeof(char **) * form_nb);
+	tetris_pack(pack, tetris);
 	//form_define(pack, form_nb);
-	printf("pack:\n\n%s\n", pack);
+
+	printf("pack:\n%s", pack);
+	printf("form_line 0: %s", tetris[3][0]);
+	printf("form_line 0: %s", tetris[3][1]);
+	printf("form_line 0: %s", tetris[3][2]);
+	printf("form_line 0: %s", tetris[3][3]);
+	printf("form_line 0: %s", tetris[3][4]);
+	printf("\n");
 	printf("form: %d\n", form_nb);
 }
