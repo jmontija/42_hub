@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+         #
+#    By: julio <julio@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 17:28:13 by jmontija          #+#    #+#              #
-#    Updated: 2015/12/27 20:00:54 by jmontija         ###   ########.fr        #
+#    Updated: 2016/01/02 00:08:51 by julio            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
-SRCS			+=	srcs/mainfill.c
-SRCS			+=	srcs/startfill.c
+SRCS			+=	srcs/lib_lst.c
+SRCS			+=	srcs/main.c
+SRCS			+=	srcs/launcher.c
+SRCS			+=	srcs/prelauncher.c
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)
 
