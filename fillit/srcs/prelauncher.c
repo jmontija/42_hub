@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 19:15:21 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/02 00:20:12 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/02 02:55:10 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		tetris_count(char *pack)
 	count = 0;
 	while (pack[++i])
 	{
-		//printf("%d\n", i + 1 - count);
 		if (pack[i] == '\n' && (i + 1 - count) % 5 != 0)
 			count++;
 	}
