@@ -101,25 +101,24 @@ char	**ft_strsplit(char const *s, char c)
 
 	i = 0;
 	split = NULL;
-	if (s && c)
+	if (s)
 	{
 		word = ft_wordnb(s, c);
 		//printf("%zu\n", word);
-		split = (char **)malloc(sizeof(char *) * word);
+		split = (char **)malloc(sizeof(char *) * word + 1);
 		if (split == NULL)
 			return (NULL);
 		while (i < word)
 		{
 			letter = ft_letter(s, c, i);
 			split[i] = (char *)malloc(sizeof(char) * (letter + 1));
-			ft_fill(s, c, i, split[i]);
 			if (split[i] == NULL)
 				return (NULL);
+			ft_fill(s, c, i, split[i]);
 			i++;
 		}
-		return (split);
 	}
-	return (NULL);
+	return (split);
 }
 
 /*int main(void)

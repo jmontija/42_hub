@@ -22,6 +22,5 @@ void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 		f(lst);
 		ft_lstiter(tmp, f);
 	}
-	return;
 }
 

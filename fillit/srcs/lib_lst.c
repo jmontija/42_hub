@@ -20,11 +20,13 @@ void show_group (group *grp)
     while (curr != NULL)
     {
         printf("%c\n", curr->id);
-        printf("1 %s\n", curr->shape[0]);
+        /*printf("1 %s\n", curr->shape[0]);
         printf("2 %s\n", curr->shape[1]);
         printf("3 %s\n", curr->shape[2]);
-        printf("4 %s\n", curr->shape[3]);
+        printf("4 %s\n", curr->shape[3]);*/
+        printf("x=%d y=%d", curr->x, curr->y);
         curr = curr->next;
+        printf("\n");
     }
 }
 
@@ -36,12 +38,14 @@ void insert(group *grp, char id)
     if (!(neW))
         exit(0);
     neW->id = id;
+    neW->x = 0;
+    neW->y = 0;
     neW->next = NULL;
-    if (grp->tmp != NULL)
-        grp->tmp->next = neW;
+    if (grp->curr != NULL)
+        grp->curr->next = neW;
     else
         grp->premier = neW;
-    grp->tmp = neW;
+    grp->curr = neW;
 }
 
 group *init()
@@ -50,6 +54,6 @@ group *init()
     if (!(grp))
         exit(0);
     grp->premier = NULL;
-    grp->tmp = NULL;
+    grp->curr = NULL;
     return (grp);
 }

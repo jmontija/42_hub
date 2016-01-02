@@ -24,6 +24,7 @@ typedef struct		tetrim
 	int				y;
 	char			id;
 	char			**shape;
+	char			*coord;
 	struct tetrim	*next;
 }					tetrim;
 
@@ -31,7 +32,7 @@ typedef struct  group
 {
     int 	size;
     struct tetrim *premier;
-    struct tetrim *tmp;
+    struct tetrim *curr;
 }				group;
 
 group 	*init();
