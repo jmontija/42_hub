@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 16:55:14 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/02 01:16:17 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/02 02:20:08 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct  group
 {
     int 	size;
     struct tetrim *premier;
+    struct tetrim *tmp;
 }				group;
 
 group 	*init();
