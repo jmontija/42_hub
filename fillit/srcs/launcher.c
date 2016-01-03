@@ -6,41 +6,66 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 18:53:11 by julio             #+#    #+#             */
-/*   Updated: 2016/01/02 02:37:28 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/03 20:06:46 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	fill_xy()
+int getdiez(char *pack)
 {
-
+	int i;
+	int count;
+	
+	i = -1;
+	count = 0;
+	while (pack[++i] != '\n')
+	{
+		if (pack[i] == '#')
+			count++;
+	}
+	return(count);
 }
-
-void	fill_grp(char *pack, group *grp, int *p, int k)
+void	fill_grp(char *pack, group *grp, int *p)
 {
 	int i;
 	int j;
+	int y;
+	int x;
 	tetrim *curr;
 
 	i = -1;
 	j = -1;
+	x = 0;
+	y = 0;
 	curr = grp->curr;
-	//printf("%d\n", *p);
-	//curr->shape = (char **)malloc(sizeof(char *) * 4);
+	curr->shape = (char **)malloc(sizeof(char *) * 5);
 	while (++i < 4)
 	{
-		//curr->shape[i] = (char *)malloc(sizeof(char) * 5);
-		while (++j < 5 && pack[*p] != '#')
-			*p += 1;
-		//printf("%c %d\n", pack[*p], *p);
-		if (pack[*p] == '#')
+		curr->shape[i] = (char *)malloc(sizeof(char) * 5);
+		while (++j < 5)
 		{
-			*p = 26 * (k + 1);
-			return ;
+			if (pack[*p] == '.' && getdiez(&pack[*p]) > 0 &&
+				((y > 0 && (pack[*p - 5] == '#' || pack[*p - 10] == '#')) ||
+				 (y < 3 && (pack[*p + 5] == '#' || pack[*p + 10] == '#'))))
+			{
+				curr->shape[y][x] = ' ';//pack[*p];	
+				x++;
+			}
+			if (pack[*p] == '#')
+			{
+				curr->shape[y][x] = curr->id;
+				x++;
+			}
+			*p += 1;
 		}
+		if (x != 0)
+			y++;
+		x = 0;
 		j = -1;
-	}	
+	}
+	*p += 1;
+	printf("%d\n", *p);
 }
 
 void	launcher(group *grp, char *pack)
@@ -53,9 +78,9 @@ void	launcher(group *grp, char *pack)
 	while (++i < grp->size)
 	{
 		insert(grp, ('A' + i));
-		fill_grp(pack, grp, &p, i);
+		fill_grp(pack, grp, &p);
 	}
 	printf("pack:\n%s", pack);
+	show_group(grp);
 	printf("grp.size = %d\n", grp->size);
-	//show_group(grp);
 }
