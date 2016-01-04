@@ -63,7 +63,6 @@ SRC += ft_strstr.c
 SRC += ft_strnstr.c
 SRC += ft_itoa.c
 SRC += ft_strsub.c
-SRC += ft_lennospace.c
 SRC += ft_lstnew.c
 SRC += ft_lstdelone.c
 SRC += ft_lstdel.c

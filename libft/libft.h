@@ -65,7 +65,6 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_atoi(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
-size_t				ft_lennospace(char const *s);
 size_t				ft_strlen(const char *s);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 char				**ft_strsplit(char const *s, char c);

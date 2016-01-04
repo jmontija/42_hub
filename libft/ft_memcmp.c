@@ -30,12 +30,3 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-/*int		main(void)
-{
-	const char s1[] = "OLA";
-	const char s2[] = "OLE";
-
-	printf("%d\n", ft_memcmp(s1, s2, 3));
-	return (0);
-}*/

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+int	ft_isSpace(int c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
@@ -20,7 +20,7 @@ int	ft_isspace(int c)
 		return (0);
 }
 
-int		ft_without_space_len(const char *str)
+int		ft_len_noSpace(const char *str)
 {
 	unsigned int space_len;
 	unsigned int len;
@@ -32,12 +32,12 @@ int		ft_without_space_len(const char *str)
 	if (str)
 	{
 		len = ft_strlen(str);
-		while (str[i] && ft_isspace(str[i++]))
+		while (str[i] && ft_isSpace(str[i++]))
 			space_len++;
 		if (i < len)
 		{
 			i = len - 1;
-			while (str[i] && ft_isspace(str[i--]))
+			while (str[i] && ft_isSpace(str[i--]))
 				space_len++;
 		}
 	}
@@ -52,21 +52,22 @@ char	*ft_strtrim(char const *s)
 
 	if (s)
 	{
-		len = ft_without_space_len(s);
+		len = ft_len_noSpace(s);
 		if (len > 0)
 		{
 			i = 0;
 			result = ft_strnew(len);
 			if (result)
 			{
-				while (s[i] && ft_isspace(s[i]))
+				while (s[i] && ft_isSpace(s[i]))
 					i++;
 				if (!*(s + i))
-					return (ft_strnew(0));
+					return (ft_strdup(""));
 				ft_strncpy(result, &s[i], len);
-			}
-			return (result);
+				result[len] = '\0';
+				return (result);
+			}			
 		}
 	}
-	return (ft_strnew(0));
+	return (ft_strdup(""));
 }

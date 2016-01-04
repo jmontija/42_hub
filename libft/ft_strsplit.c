@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_fill(char const *s, char c, size_t idx, char *split)
+static void	ft_fill(char const *s, char c, size_t idx, char *split)
 {
 	unsigned int word;
 	unsigned int letter;
@@ -50,7 +50,7 @@ unsigned int	ft_letter(char const *s, char c,size_t idx)
 	word = 0;
 	letter = 0;
 	i = 0;
-	while (s[i] != '\0')
+	while (s[0] && s[i] != '\0')
 	{
 		if (s[i] != c)
 		{
@@ -64,7 +64,6 @@ unsigned int	ft_letter(char const *s, char c,size_t idx)
 		}
 		i++;
 	}
-	//printf("%zu letter\n", letter);
 	return (letter);
 }
 
@@ -77,7 +76,7 @@ unsigned int ft_wordnb(char const *s, char c)
 	i 		= 0;
 	if (s && c)
 	{
-		if (s[0] && s[0] != c)
+		if (s[i] && s[i] != c)
 			word = 1;
 		else
 			word = 0;
@@ -104,37 +103,32 @@ char	**ft_strsplit(char const *s, char c)
 	if (s)
 	{
 		word = ft_wordnb(s, c);
-		//printf("%zu\n", word);
-		split = (char **)malloc(sizeof(char *) * word + 1);
-		if (split == NULL)
+		split = (char **)malloc(sizeof(char *) * (word + 1));
+		if (split)
+			split[word] = NULL;
+		else
 			return (NULL);
 		while (i < word)
 		{
 			letter = ft_letter(s, c, i);
 			split[i] = (char *)malloc(sizeof(char) * (letter + 1));
-			if (split[i] == NULL)
+			if (split[i])
+				ft_fill(s, c, i, split[i]);
+			else
 				return (NULL);
-			ft_fill(s, c, i, split[i]);
 			i++;
 		}
+		return (split);
 	}
-	return (split);
+	return (NULL);
 }
 
-/*int main(void)
+/*int	main(void)
 {
-	char tosplit[] = "0salut0les**0etudiants0***";
-	char **split;
+	char str[] = "";
+	char	**stri;
+	stri = ft_strsplit(str, '*');
 
-	split = ft_strsplit(tosplit, '0');
-
-		printf("%s\n", split[0]);
-		printf("%s\n", split[1]);
-		printf("%s\n", split[2]);
-		printf("%s\n", split[3]);
-		printf("%s\n", split[4]);
-		printf("%s\n", split[5]);
-		printf("%s\n", split[6]);
-	
+	printf("%s\n", stri[0]);
 	return (0);
 }*/

@@ -26,11 +26,3 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (str);
 }
-
-/*int		main(void)
-{
-	char joe[50] = "YEEPA";
-	printf("%s\n", ft_memset(joe + 2, '@', 2));
-	printf("%s\n", memset(joe + 2, '@', 2));
-	return (0);
-}*/
