@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 16:55:14 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/03 20:08:39 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/04 01:13:34 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct		tetrim
 typedef struct  group
 {
     int 	size;
+    int 	x;
+    int 	y;
     struct tetrim *premier;
     struct tetrim *curr;
 }				group;
@@ -40,5 +42,6 @@ void	pre_launcher(int argc, char **argv);
 void	launcher(group *_group, char *pack);
 void 	insert(group *grp, char id);
 void 	show_group(group *grp);
+void	ft_resolve(group *grp);
 
 #endif

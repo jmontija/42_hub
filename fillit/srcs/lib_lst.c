@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/02 00:02:15 by julio             #+#    #+#             */
-/*   Updated: 2016/01/03 20:06:40 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/04 00:20:13 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void show_group (group *grp)
         printf("2 %s\n", curr->shape[1]);
         printf("3 %s\n", curr->shape[2]);
         printf("4 %s\n", curr->shape[3]);
+        printf("X= %d\n", curr->x);
+        printf("Y= %d\n", curr->y);
        // printf("x=%d y=%d", curr->x, curr->y);
         curr = curr->next;
         printf("\n");

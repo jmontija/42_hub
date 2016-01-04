@@ -6,7 +6,7 @@
 #    By: julio <julio@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 17:28:13 by jmontija          #+#    #+#              #
-#    Updated: 2016/01/03 20:08:36 by julio            ###   ########.fr        #
+#    Updated: 2016/01/04 01:14:13 by julio            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCS			+=	srcs/lib_lst.c
 SRCS			+=	srcs/main.c
 SRCS			+=	srcs/launcher.c
 SRCS			+=	srcs/prelauncher.c
+SRCS			+=	srcs/resolve.c
+
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)
 
