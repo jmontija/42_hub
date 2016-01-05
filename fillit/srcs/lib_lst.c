@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/02 00:02:15 by julio             #+#    #+#             */
-/*   Updated: 2016/01/04 00:20:13 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/05 01:34:34 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 void show_group (group *grp)
 {
     int i;
-
-    i = 0;
+    int j;
+    i = -1;
+    j = 0;
     if (!(grp))
         exit(0);
     tetrim *curr = grp->premier;
     while (curr != NULL)
     {
-        printf("SHAPE: %d\n", ++i);
-        printf("1 %s\n", curr->shape[0]);
-        printf("2 %s\n", curr->shape[1]);
-        printf("3 %s\n", curr->shape[2]);
-        printf("4 %s\n", curr->shape[3]);
+        printf("SHAPE: %d\n", ++j);
+        while (curr->shape[++i])
+            printf("1 %s\n", curr->shape[i]);
+        i = -1;
         printf("X= %d\n", curr->x);
         printf("Y= %d\n", curr->y);
-       // printf("x=%d y=%d", curr->x, curr->y);
         curr = curr->next;
         printf("\n");
     }
