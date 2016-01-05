@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 18:53:11 by julio             #+#    #+#             */
-/*   Updated: 2016/01/05 01:37:40 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/05 12:44:25 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void coord_xy(group *grp, char **shape, int y)
 		}
 	}
 	grp->curr->y = y;
-	grp->mapLEN = 4 + (grp->size / 4);
 }
 int getdiez(char *pack)
 {
@@ -86,6 +85,7 @@ void	fill_grp(char *pack, group *grp, int *p)
 			}
 			*p += 1;
 		}
+		curr->shape[y][x] = '\0';
 		if (x != 0)
 			y++;
 		x = 0;
@@ -107,7 +107,7 @@ void	launcher(group *grp, char *pack)
 		insert(grp, ('A' + i));
 		fill_grp(pack, grp, &p);
 	}
-	ft_resolve(grp);
+	//ft_resolve(grp);
 	printf("pack:\n%s", pack);
 	show_group(grp);
 	printf("mapLEN: %d\n", grp->mapLEN);

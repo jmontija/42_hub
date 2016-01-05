@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 16:55:14 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/05 01:34:19 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/05 12:44:21 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct		tetrim
 
 typedef struct  group
 {
-    int 	size; // rename tetnb
+    int 	size;
     int 	mapLEN;
     char	**map;
     struct tetrim *premier;

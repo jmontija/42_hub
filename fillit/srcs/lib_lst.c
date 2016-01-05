@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/02 00:02:15 by julio             #+#    #+#             */
-/*   Updated: 2016/01/05 01:34:34 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/05 12:29:22 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void insert(group *grp, char id)
     if (!(neW))
         exit(0);
     neW->id = id;
-    neW->x = 0;
-    neW->y = 0;
     neW->next = NULL;
     if (grp->curr != NULL)
         grp->curr->next = neW;

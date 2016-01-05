@@ -6,39 +6,32 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 01:07:51 by julio             #+#    #+#             */
-/*   Updated: 2016/01/05 01:43:00 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/05 12:44:26 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void get_map(group *grp)
+/*void	ft_algo(group *grp, tetrim *curr, int x, int y)
 {
-	int i;
-	int j;
+	char **map;
+	char **shape;
 
-	i = -1;
-	j = -1;
-	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN);
-	while (++i < grp->mapLEN)
+	map = grp->map;
+	shape = curr->shape;
+	if (curr != NULL)
 	{
-		grp->map[i] = (char *)malloc(sizeof(char) * grp->mapLEN + 1);
-		while (++j < grp->mapLEN)
-			grp->map[i][j] = '.';
-		grp->map[i][j] = '\0';
-		printf("%d.\t%s\n", i+1, grp->map[i]);
-		j = -1;
+		if (map[x][y] == '.' && curr)
+
 	}
 }
 
 void	ft_resolve(group *grp)
 {
-	/*char 	**map;
-	int		i;
+	char 	**map;
 	tetrim	*curr;
 
-	curr = grp->premier;*/
-	get_map(grp);
-	//map = grp->map;
-
-}
+	curr = grp->premier;
+	map = grp->map;
+	ft_algo(grp, curr, 0, 0);
+}*/
