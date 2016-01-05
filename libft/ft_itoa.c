@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/05 15:37:47 by jmontija          #+#    #+#             */
+/*   Updated: 2016/01/05 15:38:08 by jmontija         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static void	itoa_isnegative(int *n, int *negative)
@@ -9,7 +21,7 @@ static void	itoa_isnegative(int *n, int *negative)
 	}
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int		tmpn;
 	int		len;

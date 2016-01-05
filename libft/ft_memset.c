@@ -6,7 +6,7 @@
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 13:35:35 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/11 13:35:38 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:38:52 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t i;
-	unsigned char *str;
+	size_t			i;
+	unsigned char	*str;
 
 	str = (unsigned char *)b;
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 04:01:24 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/23 18:33:42 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:25:58 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list *item;
 

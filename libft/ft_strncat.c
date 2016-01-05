@@ -6,7 +6,7 @@
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 17:11:29 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 17:11:31 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:52:23 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 		s1[len + i] = '\0';
 		return (s1);
 	}
-	return(NULL);
+	return (NULL);
 }

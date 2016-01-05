@@ -6,13 +6,13 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 17:52:36 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/23 18:40:09 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:23:15 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
 	t_list *tmp;
 
@@ -23,4 +23,3 @@ void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 		ft_lstiter(tmp, f);
 	}
 }
-

@@ -17,6 +17,10 @@ SRC += ft_isalpha.c
 SRC += ft_isascii.c
 SRC += ft_isdigit.c
 SRC += ft_isprint.c
+SRC += ft_isspace.c
+SRC += ft_ispunct.c
+SRC += ft_power.c
+SRC += ft_len_nospace.c
 SRC += ft_memalloc.c
 SRC += ft_memccpy.c
 SRC += ft_memchr.c
@@ -69,6 +73,7 @@ SRC += ft_lstdel.c
 SRC += ft_lstadd.c
 SRC += ft_lstiter.c
 SRC += ft_lstmap.c
+SRC += ft_wordnb.c
 
 SRCO = $(SRC:.c=.o)
 CC = gcc

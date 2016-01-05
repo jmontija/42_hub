@@ -6,7 +6,7 @@
 /*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 14:19:53 by jmontija          #+#    #+#             */
-/*   Updated: 2015/12/12 14:19:55 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:46:54 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strdup(const char *s1)
 {
-	int i;
-	char *dup;
+	int		i;
+	char	*dup;
 
 	i = 0;
 	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
