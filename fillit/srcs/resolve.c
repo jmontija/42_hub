@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-/*int count_dot(char *line)
+int count_dot(char *line)
 {
 	int i;
 
@@ -22,32 +22,34 @@
 	return (i);
 }
 
+void	ft_add_tetrim()
+{
+	
+}
+
 void	ft_algo(group *grp, tetrim *curr, int x, int y)
 {
 	char **map;
 	char **shape;
-	int i;
-	int j;
-	int dot;
 
 	map = grp->map;
 	shape = curr->shape;
-	i = 0;
-	j = 0;
-	dot = 0
-	if (curr != NULL)
+
+	if (map[y][x] == '.')
 	{
-		if (map[y][x] == '.')
-			dot = count_dot(&map[y]);
+		if (x == 0 && y == 0)
+			strcpy(map[y][x], );
 	}
+	/*else if (ft_isalpha(map[y][x]))
+		ft_algo(group *grp, tetrim *curr, x + 1, y);
+	else
+		ft_algo(group *grp, tetrim *curr, 0, y + 1);*/
 }
 
 void	ft_resolve(group *grp)
 {
-	char 	**map;
 	tetrim	*curr;
 
 	curr = grp->premier;
-	map = grp->map;
 	ft_algo(grp, curr, 0, 0);
-}*/
+}

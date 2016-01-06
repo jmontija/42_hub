@@ -29,7 +29,7 @@ char			*ft_strtrim(char const *s)
 			{
 				while (s[i] && ft_isspace(s[i]))
 					i++;
-				if (!*(s + i))
+				if (!s[i])
 					return (ft_strdup(""));
 				ft_strncpy(result, &s[i], len);
 				result[len] = '\0';
