@@ -12,25 +12,6 @@
 
 #include "fillit.h"
 
-void ft_get_map(group *grp)
-{
-	int i;
-	int j;
-
-	i = -1;
-	j = -1;
-	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN);
-	while (++i < grp->mapLEN)
-	{
-		grp->map[i] = (char *)malloc(sizeof(char) * grp->mapLEN + 1);
-		while (++j < grp->mapLEN)
-			grp->map[i][j] = '.';
-		grp->map[i][j] = '\0';
-		printf("%d.\t%s\n", i+1, grp->map[i]);
-		j = -1;
-	}
-}
-
 int		tetris_count(char *pack)
 {
 	int	i;
@@ -76,6 +57,5 @@ void	pre_launcher(int argc, char **argv)
 	grp = init();
 	grp->size = tetris_count(pack);
 	grp->mapLEN = 4 + (grp->size / 4);
-	ft_get_map(grp);
 	launcher(grp, pack);
 }

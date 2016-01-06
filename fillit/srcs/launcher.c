@@ -12,6 +12,29 @@
 
 #include "fillit.h"
 
+void ft_get_map(group *grp, tetrim *curr)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN);
+	while (++i < grp->mapLEN)
+	{
+		grp->map[i] = (char *)malloc(sizeof(char) * grp->mapLEN + 1);
+		while (++j < grp->mapLEN)
+		{
+			if (curr->shape[i] && ft_isalpha(curr->shape[i][j]))
+				grp->map[i][j] = curr->shape[i][j];
+			else
+				grp->map[i][j] = '.';
+		}
+		grp->map[i][j] = '\0';
+		j = -1;
+	}
+}
+
 void coord_xy(group *grp, char **shape, int y)
 {
 	int i;
@@ -33,6 +56,7 @@ void coord_xy(group *grp, char **shape, int y)
 			j = -1;
 		}
 	}
+	shape[i] = NULL;
 	grp->curr->y = y;
 }
 int getdiez(char *pack)
@@ -63,7 +87,7 @@ void	fill_grp(char *pack, group *grp, int *p)
 	x = 0;
 	y = 0;
 	curr = grp->curr;
-	curr->shape = (char **)malloc(sizeof(char *) * 4);
+	curr->shape = (char **)malloc(sizeof(char *) * 5); // malloc a 4 + 1 pour eviter le segfault dans les conditions while (curr->shape[i]) // set le 5 a NULL(cf coord_xy)
 	while (++i < 4)
 	{
 		curr->shape[i] = (char *)malloc(sizeof(char) * 5);
@@ -75,7 +99,7 @@ void	fill_grp(char *pack, group *grp, int *p)
 					(y < 3 && pack[*p + 5] == '#') ||
 					(y < 2 && (pack[*p + 5] == '#' || pack[*p + 10] == '#'))))
 			{
-				curr->shape[y][x] = '.';//pack[*p];	
+				curr->shape[y][x] = pack[*p];	
 				x++;
 			}
 			else if (pack[*p] == '#')
@@ -107,9 +131,10 @@ void	launcher(group *grp, char *pack)
 		insert(grp, ('A' + i));
 		fill_grp(pack, grp, &p);
 	}
-	//ft_resolve(grp);
-	printf("pack:\n%s", pack);
-	show_group(grp);
+	ft_get_map(grp, grp->premier);
+	ft_resolve(grp);
+	//printf("pack:\n%s", pack);
+	show_tetrim(grp);
 	printf("mapLEN: %d\n", grp->mapLEN);
 	printf("grp.size = %d\n", grp->size);
 }

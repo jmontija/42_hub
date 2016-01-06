@@ -22,9 +22,25 @@ int count_dot(char *line)
 	return (i);
 }
 
-void	ft_add_tetrim()
+void	ft_check(group *grp, char *line)
 {
-	
+	int dot_rest;
+	tetrim	*curr;
+
+	curr = grp->premier;
+	dot_rest = count_dot(line);
+	/*while (curr != NULL)
+	{
+		if (!curr->used && curr->x <= dot_rest)
+		{
+			curr->used = true;
+		}
+	}*/
+}
+
+void	ft_check_sq()
+{
+
 }
 
 void	ft_algo(group *grp, tetrim *curr, int x, int y)
@@ -35,15 +51,20 @@ void	ft_algo(group *grp, tetrim *curr, int x, int y)
 	map = grp->map;
 	shape = curr->shape;
 
-	if (map[y][x] == '.')
+	if (y < grp->mapLEN)
 	{
-		if (x == 0 && y == 0)
-			strcpy(map[y][x], );
+		if (ft_isalpha(map[y][x]))
+			ft_algo(grp, curr, x + 1, y);
+		else if (map[y][x] == '\0')
+			ft_algo(grp, curr, 0, y + 1);
+		else
+		{
+			ft_check(grp, &map[y][x]);
+			ft_algo(grp, curr, x + 1, y);
+		}
 	}
-	/*else if (ft_isalpha(map[y][x]))
-		ft_algo(group *grp, tetrim *curr, x + 1, y);
-	else
-		ft_algo(group *grp, tetrim *curr, 0, y + 1);*/
+	else if (y > grp->mapLEN)
+		ft_check_sq();
 }
 
 void	ft_resolve(group *grp)
@@ -52,4 +73,5 @@ void	ft_resolve(group *grp)
 
 	curr = grp->premier;
 	ft_algo(grp, curr, 0, 0);
+	show_tab(grp->map);
 }

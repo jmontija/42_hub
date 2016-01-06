@@ -18,6 +18,9 @@
 
 # define BUFFER (27*21) //
 
+typedef int bool;
+enum {false, true};
+
 typedef struct		tetrim
 {
 	int				x;
@@ -25,6 +28,7 @@ typedef struct		tetrim
 	char			id;
 	char			**shape;
 	char			*coord;
+	bool			used;
 	struct tetrim	*next;
 }					tetrim;
 
@@ -41,7 +45,8 @@ group 	*init();
 void	pre_launcher(int argc, char **argv);
 void	launcher(group *_group, char *pack);
 void 	insert(group *grp, char id);
-void 	show_group(group *grp);
+void 	show_tetrim(group *grp);
+void 	show_tab(char **tab);
 void	ft_resolve(group *grp);
 
 #endif

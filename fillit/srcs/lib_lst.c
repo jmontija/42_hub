@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-void show_group (group *grp)
+void show_tetrim (group *grp)
 {
     int i;
     int j;
@@ -25,12 +25,24 @@ void show_group (group *grp)
     {
         printf("SHAPE: %d\n", ++j);
         while (curr->shape[++i])
-            printf("1 %s\n", curr->shape[i]);
+            printf("%d. %s\n", i+1, curr->shape[i]);
         i = -1;
         printf("X= %d\n", curr->x);
         printf("Y= %d\n", curr->y);
         curr = curr->next;
         printf("\n");
+    }
+}
+
+void show_tab(char **tab)
+{
+    int i;
+    i = -1;
+
+    printf("MAP\n");
+    while (tab[++i])
+    {
+        printf("%d. %s\n", i+1, tab[i]);
     }
 }
 
@@ -42,6 +54,7 @@ void insert(group *grp, char id)
     if (!(neW))
         exit(0);
     neW->id = id;
+    neW->used = false;
     neW->next = NULL;
     if (grp->curr != NULL)
         grp->curr->next = neW;
