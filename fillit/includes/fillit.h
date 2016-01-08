@@ -37,6 +37,7 @@ typedef struct  group
     int 	size;
     int 	mapLEN;
     char	**map;
+    char	**save;
     struct tetrim *premier;
     struct tetrim *curr;
 }				group;

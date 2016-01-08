@@ -19,7 +19,7 @@ void ft_get_map(group *grp, tetrim *curr)
 
 	i = -1;
 	j = -1;
-	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN);
+	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN + 1);
 	while (++i < grp->mapLEN)
 	{
 		grp->map[i] = (char *)malloc(sizeof(char) * grp->mapLEN + 1);
@@ -33,6 +33,8 @@ void ft_get_map(group *grp, tetrim *curr)
 		grp->map[i][j] = '\0';
 		j = -1;
 	}
+	grp->map[i] = NULL;
+	curr->used = true;
 }
 
 void coord_xy(group *grp, char **shape, int y)

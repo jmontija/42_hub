@@ -50,7 +50,7 @@ void insert(group *grp, char id)
 {
     tetrim *neW;
 
-    neW = (tetrim*)malloc(sizeof(tetrim));
+    neW = (tetrim *)malloc(sizeof(tetrim));
     if (!(neW))
         exit(0);
     neW->id = id;
