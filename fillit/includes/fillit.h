@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 16:55:14 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/05 12:44:21 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/09 14:59:08 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct		tetrim
 	bool			used;
 	struct tetrim	*next;
 }					tetrim;
+
+typedef struct 	checker
+{
+	int dot1;
+	int dot2;
+	int checker;
+}				checker;
 
 typedef struct  group
 {

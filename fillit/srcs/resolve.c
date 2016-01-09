@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 01:07:51 by julio             #+#    #+#             */
-/*   Updated: 2016/01/05 12:56:21 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/09 18:37:58 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,6 @@ int count_dot_x(char *line)
 	return (i);
 }
 
-void		ft_add_tetrim(group *grp, tetrim *curr, int pos_x, int pos_y)
-{
-	int	i;
-	int j;
-
-	i = -1;
-	j = -1;
-
-	while (curr->shape[++i] && grp->map[pos_y + i])
-	{
-		while (curr->shape[i][++j] && grp->map[pos_y + i][pos_x + j])
-		{
-			if (curr->shape[i][j] != '.' && grp->map[pos_y + i][pos_x + j] == '.')
-				grp->map[pos_y + i][pos_x + j] = curr->shape[i][j];
-		}
-		j = -1;
-	}
-	curr->used = true;
-	printf("ADD_ID = %c\n", curr->id);
-}
-
 int		ft_try(group *grp, tetrim *curr, int pos_x, int pos_y)
 {
 	int	i;
@@ -50,21 +29,47 @@ int		ft_try(group *grp, tetrim *curr, int pos_x, int pos_y)
 	int check;
 
 	i = -1;
-	j = -1;
 	check = 0;
-
 	while (curr->shape[++i] && grp->map[pos_y + i])
 	{
+		j = -1;
 		while (curr->shape[i][++j] && grp->map[pos_y + i][pos_x + j])
 		{
-			if (curr->shape[i][j] != '.' && grp->map[pos_y + i][pos_x + j] == '.')
+			if (curr->shape[i][j] == '.' && i == 0
+				&& ft_try(grp, curr, pos_x - 1, pos_y))
+				pos_x -= 1;
+			else if (curr->shape[i][j] != '.' &&
+				grp->map[pos_y + i][pos_x + j] && grp->map[pos_y + i][pos_x + j] == '.')
 				check++;
 		}
-		j = -1;
 	}
+	printf("X = %d Y = %d ID = %c CHECK = %d\n", pos_x, pos_y, curr->id, check);
 	if (check == 4)
 		return (1);
 	return (0);
+}
+
+void		ft_add_tetrim(group *grp, tetrim *curr, int pos_x, int pos_y)
+{
+	int	i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (curr->shape[++i] && grp->map[pos_y + i])
+	{
+		j = -1;
+		while (curr->shape[i][++j] && grp->map[pos_y + i][pos_x + j])
+		{
+			if (curr->shape[i][j] == '.' && i == 0
+				&& ft_try(grp, curr, pos_x - 1, pos_y))
+				pos_x -= 1;
+			else if (curr->shape[i][j] != '.' &&
+				grp->map[pos_y + i][pos_x + j] && grp->map[pos_y + i][pos_x + j] == '.')
+				grp->map[pos_y + i][pos_x + j] = curr->shape[i][j];
+		}
+	}
+	curr->used = true;
 }
 
 int		ft_check(group *grp, char *line, int x, int y)
@@ -97,11 +102,8 @@ void	ft_check_sq()
 void	ft_tracking(group *grp, tetrim *curr, int x, int y)
 {
 	char **map;
-	char **shape;
 
 	map = grp->map;
-	shape = curr->shape;
-
 	if (y < grp->mapLEN)
 	{
 		if (ft_isalpha(map[y][x]))
