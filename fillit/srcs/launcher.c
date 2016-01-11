@@ -12,29 +12,22 @@
 
 #include "fillit.h"
 
-void ft_get_map(group *grp, tetrim *curr)
+void ft_get_map(group *grp)
 {
 	int i;
 	int j;
 
 	i = -1;
-	j = -1;
 	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN + 1);
 	while (++i < grp->mapLEN)
 	{
+		j = -1;
 		grp->map[i] = (char *)malloc(sizeof(char) * grp->mapLEN + 1);
 		while (++j < grp->mapLEN)
-		{
-			if (curr->shape[i] && ft_isalpha(curr->shape[i][j]))
-				grp->map[i][j] = curr->shape[i][j];
-			else
-				grp->map[i][j] = '.';
-		}
+			grp->map[i][j] = '.';
 		grp->map[i][j] = '\0';
-		j = -1;
 	}
 	grp->map[i] = NULL;
-	curr->used = true;
 }
 
 void coord_xy(group *grp, char **shape, int y)
@@ -133,7 +126,7 @@ void	launcher(group *grp, char *pack)
 		insert(grp, ('A' + i));
 		fill_grp(pack, grp, &p);
 	}
-	ft_get_map(grp, grp->premier);
+	ft_get_map(grp);
 	ft_resolve(grp);
 	//printf("pack:\n%s", pack);
 	show_tetrim(grp);

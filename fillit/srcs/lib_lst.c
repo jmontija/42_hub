@@ -34,16 +34,14 @@ void show_tetrim (group *grp)
     }
 }
 
-void show_tab(char **tab)
+void show_tab(char *name, char **tab)
 {
     int i;
     i = -1;
 
-    printf("MAP\n");
+    printf("%s\n", name);
     while (tab[++i])
-    {
-        printf("%d. %s\n", i+1, tab[i]);
-    }
+        printf("%d.\t%s\n", i+1, tab[i]);
 }
 
 void insert(group *grp, char id)
@@ -70,5 +68,6 @@ group *init()
         exit(0);
     grp->premier = NULL;
     grp->curr = NULL;
+    grp->save = NULL;
     return (grp);
 }

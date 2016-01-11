@@ -25,7 +25,7 @@ SRCS			+=	srcs/main.c
 SRCS			+=	srcs/launcher.c
 SRCS			+=	srcs/prelauncher.c
 SRCS			+=	srcs/resolve.c
-
+SRCS			+=	srcs/save_reset.c
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)
 

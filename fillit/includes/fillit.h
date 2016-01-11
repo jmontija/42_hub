@@ -54,7 +54,10 @@ void	pre_launcher(int argc, char **argv);
 void	launcher(group *_group, char *pack);
 void 	insert(group *grp, char id);
 void 	show_tetrim(group *grp);
-void 	show_tab(char **tab);
+void 	show_tab(char *name, char **tab);
 void	ft_resolve(group *grp);
+void	ft_save_check(group *grp, tetrim *curr);
+int		ft_sqlen(group *grp, char **map);
+int 	count_dot_x(char *line);
 
 #endif
