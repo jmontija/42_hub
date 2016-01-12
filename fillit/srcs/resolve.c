@@ -22,6 +22,25 @@ int count_dot_x(char *line)
 	return (i);
 }
 
+int	ft_allused(group *grp)
+{
+	tetrim *curr;
+	int used;
+
+	curr = grp->premier;
+	used = 0;
+	while (curr != NULL)
+	{
+		if (curr->used)
+			used++;
+		curr = curr->next;
+	}
+	//printf("USED = %d/%d\n", used, grp->size);
+	if (used == grp->size)
+		return (1);
+	return (0);
+}
+
 int		ft_try(group *grp, tetrim *curr, int pos_x, int pos_y)
 {
 	int	i;
@@ -70,30 +89,21 @@ void		ft_add_tetrim(group *grp, tetrim *curr, int pos_x, int pos_y)
 		}
 	}
 	curr->used = true;
-	printf("ADD TETRIM %c\n", curr->id);
+	//printf("ADD TETRIM %c\n", curr->id);
 }
 
 int		ft_check(group *grp, tetrim *curr, int x, int y)
 {
 	int dot_rest;
-	int i = 0;
+	//int i = 0;
 
 	dot_rest = count_dot_x(&grp->map[y][x]);
-	while (curr != NULL)
+	if (curr != NULL && !curr->used && curr->x <= dot_rest && ft_try(grp, curr, x, y))
 	{
-		if (!curr->used && curr->x <= dot_rest)
-		{
-			if (ft_try(grp, curr, x, y))
-			{
-				ft_add_tetrim(grp, curr, x, y);
-				printf("FT_CHECK: LEAVING\n");
-				return (1);
-			}
-		}
-		printf("%d.\ttracker: %c\n", ++i, curr->id);
-		curr = curr->next;
+		ft_add_tetrim(grp, curr, x, y);
+		//printf("FT_CHECK: LEAVING %c\n", curr->id);				
+		return (1);
 	}
-	printf("FT_CHECK: LEAVING\n");
 	return (0);
 }
 
@@ -102,19 +112,31 @@ void	ft_tracking(group *grp, tetrim *curr, int x, int y)
 	char **map;
 
 	map = grp->map;
-	if (y < grp->mapLEN)
+	if (y < grp->mapLEN && !ft_allused(grp))
 	{
-		if (ft_isalpha(map[y][x]))
-			ft_tracking(grp, curr, x + 1, y);
-		else if (map[y][x] == '\0')
+		if (map[y][x] == '\0')
 			ft_tracking(grp, curr, 0, y + 1);
-		else if (ft_check(grp, curr, x, y))
-			ft_tracking(grp, curr, 0, 0);
-		else
+		else if (ft_isalpha(map[y][x]))
 			ft_tracking(grp, curr, x + 1, y);
+		else
+		{
+			if (ft_check(grp, curr, x, y))
+			{
+				curr = curr->next;
+				ft_tracking(grp, curr, 0, 0);
+			}
+			else
+			{
+				ft_tracking(grp, curr, x + 1, y);
+			}
+		}
 	}
-	else if (y >= grp->mapLEN)
-		ft_save_check(grp, curr);
+	else if (ft_allused(grp))
+		ft_save_check(grp);
+	else if (y >= grp->mapLEN && !ft_allused(grp))
+	{
+		printf("HERE YOU GO %c\n", grp->curr->id);
+	}
 }
 
 void	ft_resolve(group *grp)
@@ -122,8 +144,8 @@ void	ft_resolve(group *grp)
 	tetrim	*curr;
 
 	curr = grp->premier;
-	grp->curr = curr->next;
-	ft_tracking(grp, curr, 0, 0);
-	show_tab("CURR_MAP", grp->map);
-	show_tab("CURR_SAVE", grp->save);
+	//grp->curr = curr->next;
+	ft_tracking(grp, curr, 0, 0); //SEGFAULT POSSIBLE SI PLUS DE PIECE QUE LE MIN RANGE !
+	//show_tab("CURR_MAP", grp->map);
+	//show_tab("CURR_SAVE", grp->save);
 }

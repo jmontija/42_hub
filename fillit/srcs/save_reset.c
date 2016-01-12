@@ -37,33 +37,36 @@ int		ft_sqlen(group *grp, char **map)
 	return (y);
 }
 
-void	ft_save_check(group *grp, tetrim *curr)
+void	ft_save_check(group *grp)
 {
-	int used = 0;
-	int i = -1;
+	//int i = -1;
+	tetrim	*curr;
 
-	//printf("tetrim %c: SQUARE FILL\n", curr->id);
+	curr = grp->premier;
+	printf("sqLEN = %d\n", ft_sqlen(grp, grp->map));
+
+	/*if (grp->save && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
+	{
+		printf("BETTER_SAVE_FOUND\n");
+	}
+	else if (!(grp->save))
+	{
+		printf("NO_SAVE\n");
+		grp->save = (char **)malloc(sizeof(char *) * ft_sqlen(grp, grp->map) + 1);
+		while (grp->map[++i])
+			grp->save[i] = ft_strdup(grp->map[i]);
+		grp->save[i] = NULL;
+	}*/
+
+	show_tab("CURR_MAP", grp->map);
+	grp->mapLEN -= 1;
+	ft_reset_map(grp);
 	while (curr != NULL)
 	{
-		if (curr->used)
-			used++;
+		curr->used = false;
+		printf("%c used = %d\n", curr->id, curr->used);
 		curr = curr->next;
 	}
-	if (used == grp->size)
-	{
-		printf("sqLEN = %d\n", ft_sqlen(grp, grp->map));
-		if (grp->save && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
-		{
-			printf("FIND_SAVE\n");
-		}
-		else if (!(grp->save)) 
-		{
-			printf("NO_SAVE\n");
-			grp->save = (char **)malloc(sizeof(char *) * ft_sqlen(grp, grp->map) + 1);
-			while (grp->map[++i])
-				grp->save[i] = ft_strdup(grp->map[i]);
-			grp->save[i] = NULL;
-		}
-	}
-
+	printf("LAST ID = %c\n", grp->curr->id);
+	ft_tracking(grp, grp->premier, 0, 0);
 }

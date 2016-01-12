@@ -30,6 +30,22 @@ void ft_get_map(group *grp)
 	grp->map[i] = NULL;
 }
 
+void	ft_reset_map(group *grp)
+{
+	int i;
+
+	i = 0;
+	while (++i < grp->mapLEN)
+	{
+		if (grp->map[i])
+		{
+			free(grp->map[i]);
+			grp->map[i] = NULL;
+		}
+	}
+	ft_get_map(grp);
+}
+
 void coord_xy(group *grp, char **shape, int y)
 {
 	int i;
@@ -129,7 +145,7 @@ void	launcher(group *grp, char *pack)
 	ft_get_map(grp);
 	ft_resolve(grp);
 	//printf("pack:\n%s", pack);
-	show_tetrim(grp);
-	printf("mapLEN: %d\n", grp->mapLEN);
-	printf("grp.size = %d\n", grp->size);
+	//show_tetrim(grp);
+	//printf("mapLEN: %d\n", grp->mapLEN);
+	//printf("grp.size = %d\n", grp->size);
 }

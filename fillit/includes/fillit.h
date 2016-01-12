@@ -56,7 +56,10 @@ void 	insert(group *grp, char id);
 void 	show_tetrim(group *grp);
 void 	show_tab(char *name, char **tab);
 void	ft_resolve(group *grp);
-void	ft_save_check(group *grp, tetrim *curr);
+void	ft_tracking(group *grp, tetrim *curr, int x, int y);
+void	ft_save_check(group *grp);
+void	ft_reset_map(group *grp);
+int		ft_allused(group *grp);
 int		ft_sqlen(group *grp, char **map);
 int 	count_dot_x(char *line);
 

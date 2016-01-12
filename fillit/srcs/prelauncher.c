@@ -56,6 +56,6 @@ void	pre_launcher(int argc, char **argv)
 	}
 	grp = init();
 	grp->size = tetris_count(pack);
-	grp->mapLEN = 4 + (grp->size / 4);
+	grp->mapLEN = 12;//4 + (grp->size / 4);
 	launcher(grp, pack);
 }
