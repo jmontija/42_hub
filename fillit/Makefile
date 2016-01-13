@@ -20,7 +20,7 @@ LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
-SRCS			+=	srcs/lib_lst.c
+SRCS			+=	srcs/fillib.c
 SRCS			+=	srcs/main.c
 SRCS			+=	srcs/launcher.c
 SRCS			+=	srcs/prelauncher.c

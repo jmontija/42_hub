@@ -36,6 +36,22 @@ int		ft_sqlen(group *grp, char **map)
 	return (y);
 }
 
+void	ft_reset_map(group *grp)
+{
+	int i;
+
+	i = 0;
+	while (++i < grp->mapLEN)
+	{
+		if (grp->map[i])
+		{
+			free(grp->map[i]);
+			grp->map[i] = NULL;
+		}
+	}
+	ft_get_map(grp);
+}
+
 void	ft_save(group *grp)
 {
 	int i = -1;
@@ -51,7 +67,6 @@ void	ft_save(group *grp)
 	while (curr != NULL)
 	{
 		curr->used = false;
-		//printf("%c used = %d\n", curr->id, curr->used);
 		curr = curr->next;
 	}
 	ft_tracking(grp, grp->premier);
@@ -61,7 +76,6 @@ void	ft_save_check(group *grp)
 {
 	int i = -1;
 
-	//show_tab("LAST_MAP", grp->map);
 	if (grp->save && ft_allused(grp) && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
 	{
 		while (grp->save[++i])
@@ -72,13 +86,10 @@ void	ft_save_check(group *grp)
 				grp->save[i] = NULL;
 			}
 		}
-		//printf("BETTER_SAVE_FOUND with sqLEN = %d\n", ft_sqlen(grp, grp->map));
+		printf("BETTER_SQ_FOUND with sqLEN = %d\n", ft_sqlen(grp, grp->map));
 		ft_save(grp);
 	}
 	else if (!(grp->save))
-	{
-		//printf("NO_SAVE sqLEN = %d\n", ft_sqlen(grp, grp->map));
 		ft_save(grp);
-	}
 
 }

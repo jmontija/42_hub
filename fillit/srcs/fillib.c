@@ -11,6 +11,33 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+int count_dot_x(char *line)
+{
+    int i;
+
+    i = 0;
+    while (line[i] == '.' && line[i] != '\0')
+        i++;
+    return (i);
+}
+
+int ft_allused(group *grp)
+{
+    tetrim *curr;
+    int used;
+
+    curr = grp->premier;
+    used = 0;
+    while (curr != NULL)
+    {
+        if (curr->used)
+            used++;
+        curr = curr->next;
+    }
+    if (used == grp->size)
+        return (1);
+    return (0);
+}
 
 void show_tetrim (group *grp)
 {
@@ -69,6 +96,5 @@ group *init()
     grp->premier = NULL;
     grp->curr = NULL;
     grp->save = NULL;
-    grp->dot = 0;
     return (grp);
 }

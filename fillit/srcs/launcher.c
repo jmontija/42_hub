@@ -12,40 +12,6 @@
 
 #include "fillit.h"
 
-void ft_get_map(group *grp)
-{
-	int i;
-	int j;
-
-	i = -1;
-	grp->map = (char **)malloc(sizeof(char *) * grp->mapLEN + 1);
-	while (++i < grp->mapLEN)
-	{
-		j = -1;
-		grp->map[i] = (char *)malloc(sizeof(char) * grp->mapLEN + 1);
-		while (++j < grp->mapLEN)
-			grp->map[i][j] = '.';
-		grp->map[i][j] = '\0';
-	}
-	grp->map[i] = NULL;
-}
-
-void	ft_reset_map(group *grp)
-{
-	int i;
-
-	i = 0;
-	while (++i < grp->mapLEN)
-	{
-		if (grp->map[i])
-		{
-			free(grp->map[i]);
-			grp->map[i] = NULL;
-		}
-	}
-	ft_get_map(grp);
-}
-
 void coord_xy(group *grp, char **shape, int y)
 {
 	int i;
@@ -98,7 +64,7 @@ void	fill_grp(char *pack, group *grp, int *p)
 	x = 0;
 	y = 0;
 	curr = grp->curr;
-	curr->shape = (char **)malloc(sizeof(char *) * 5); // malloc a 4 + 1 pour eviter le segfault dans les conditions while (curr->shape[i]) // set le 5 a NULL(cf coord_xy)
+	curr->shape = (char **)malloc(sizeof(char *) * 5);
 	while (++i < 4)
 	{
 		curr->shape[i] = (char *)malloc(sizeof(char) * 5);
@@ -142,10 +108,5 @@ void	launcher(group *grp, char *pack)
 		insert(grp, ('A' + i));
 		fill_grp(pack, grp, &p);
 	}
-	ft_get_map(grp);
-	ft_resolve(grp);
-	//printf("pack:\n%s", pack);
-	//show_tetrim(grp);
-	//printf("mapLEN: %d\n", grp->mapLEN);
-	//printf("grp.size = %d\n", grp->size);
+	ft_tracking(grp, grp->premier);
 }

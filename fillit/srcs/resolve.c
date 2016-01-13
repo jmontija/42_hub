@@ -12,35 +12,6 @@
 
 #include "fillit.h"
 
-int count_dot_x(char *line)
-{
-	int i;
-
-	i = 0;
-	while (line[i] == '.' && line[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	ft_allused(group *grp)
-{
-	tetrim *curr;
-	int used;
-
-	curr = grp->premier;
-	used = 0;
-	while (curr != NULL)
-	{
-		if (curr->used)
-			used++;
-		curr = curr->next;
-	}
-	//printf("USED = %d/%d\n", used, grp->size);
-	if (used == grp->size)
-		return (1);
-	return (0);
-}
-
 int		ft_try(group *grp, tetrim *curr, int pos_x, int pos_y)
 {
 	int	i;
@@ -62,7 +33,6 @@ int		ft_try(group *grp, tetrim *curr, int pos_x, int pos_y)
 				check++;
 		}
 	}
-	//printf("X = %d Y = %d ID = %c CHECK = %d\n", pos_x, pos_y, curr->id, check);
 	if (check == 4)
 		return (1);
 	return (0);
@@ -88,7 +58,6 @@ void		ft_add_tetrim(group *grp, tetrim *curr, int pos_x, int pos_y)
 		}
 	}
 	curr->used = true;
-	//printf("ADD TETRIM %c\n", curr->id);
 }
 
 void	ft_rm_tetrim(group *grp, tetrim *curr)
@@ -110,14 +79,12 @@ void	ft_rm_tetrim(group *grp, tetrim *curr)
 void		ft_check(group *grp, tetrim *curr, int x, int y)
 {
 	int dot_rest;
-	//int i = 0;
 	dot_rest = count_dot_x(&grp->map[y][x]);
-	if (curr != NULL && !curr->used /*&& curr->x <= dot_rest*/ && ft_try(grp, curr, x, y))
+	if (curr != NULL && !curr->used && ft_try(grp, curr, x, y))
 	{
 		ft_add_tetrim(grp, curr, x, y);
 		ft_tracking(grp, curr->next);
 		ft_rm_tetrim(grp, curr);
-		//printf("FT_CHECK: LEAVING %c\n", curr->id);				
 	}
 }
 
@@ -129,9 +96,7 @@ void 	ft_tracking(group *grp, tetrim *curr)
 
 	map = grp->map;
 	if (ft_allused(grp))
-	{
 		ft_save_check(grp);
-	}
 	while (++y < grp->mapLEN)
 	{
 		x = -1;
@@ -141,13 +106,8 @@ void 	ft_tracking(group *grp, tetrim *curr)
 	if (curr->id == 'A')
 	{
 		show_tab("CURR_SAVE", grp->save);
+		//show_tetrim(grp);
 		exit(0);
 	}
-}
-
-void	ft_resolve(group *grp)
-{
-
-	ft_tracking(grp, grp->premier);
 }
 
