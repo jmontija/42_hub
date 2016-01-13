@@ -32,19 +32,13 @@ typedef struct		tetrim
 	struct tetrim	*next;
 }					tetrim;
 
-typedef struct 	checker
-{
-	int dot1;
-	int dot2;
-	int checker;
-}				checker;
-
 typedef struct  group
 {
     int 	size;
     int 	mapLEN;
     char	**map;
     char	**save;
+    int 	dot;
     struct tetrim *premier;
     struct tetrim *curr;
 }				group;
@@ -56,7 +50,7 @@ void 	insert(group *grp, char id);
 void 	show_tetrim(group *grp);
 void 	show_tab(char *name, char **tab);
 void	ft_resolve(group *grp);
-void	ft_tracking(group *grp, tetrim *curr, int x, int y);
+void	ft_tracking(group *grp, tetrim *curr);
 void	ft_save_check(group *grp);
 void	ft_reset_map(group *grp);
 int		ft_allused(group *grp);

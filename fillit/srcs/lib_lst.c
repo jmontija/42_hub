@@ -69,5 +69,6 @@ group *init()
     grp->premier = NULL;
     grp->curr = NULL;
     grp->save = NULL;
+    grp->dot = 0;
     return (grp);
 }

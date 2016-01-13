@@ -31,42 +31,54 @@ int		ft_sqlen(group *grp, char **map)
 			y++;
 		}
 	}
-	//printf("sq_x=%d sq_y=%d\n", x, y);
 	if (x > y)
 		return (x);
 	return (y);
 }
 
-void	ft_save_check(group *grp)
+void	ft_save(group *grp)
 {
-	//int i = -1;
+	int i = -1;
 	tetrim	*curr;
 
 	curr = grp->premier;
-	printf("sqLEN = %d\n", ft_sqlen(grp, grp->map));
-
-	/*if (grp->save && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
-	{
-		printf("BETTER_SAVE_FOUND\n");
-	}
-	else if (!(grp->save))
-	{
-		printf("NO_SAVE\n");
-		grp->save = (char **)malloc(sizeof(char *) * ft_sqlen(grp, grp->map) + 1);
-		while (grp->map[++i])
-			grp->save[i] = ft_strdup(grp->map[i]);
-		grp->save[i] = NULL;
-	}*/
-
-	show_tab("CURR_MAP", grp->map);
+	grp->save = (char **)malloc(sizeof(char *) * ft_sqlen(grp, grp->map) + 1);
+	while (grp->map[++i])
+		grp->save[i] = ft_strdup(grp->map[i]);
+	grp->save[i] = NULL;
 	grp->mapLEN -= 1;
 	ft_reset_map(grp);
 	while (curr != NULL)
 	{
 		curr->used = false;
-		printf("%c used = %d\n", curr->id, curr->used);
+		//printf("%c used = %d\n", curr->id, curr->used);
 		curr = curr->next;
 	}
-	printf("LAST ID = %c\n", grp->curr->id);
-	ft_tracking(grp, grp->premier, 0, 0);
+	ft_tracking(grp, grp->premier);
+}
+
+void	ft_save_check(group *grp)
+{
+	int i = -1;
+
+	//show_tab("LAST_MAP", grp->map);
+	if (grp->save && ft_allused(grp) && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
+	{
+		while (grp->save[++i])
+		{
+			if (grp->save[i])
+			{
+				free(grp->save[i]);
+				grp->save[i] = NULL;
+			}
+		}
+		//printf("BETTER_SAVE_FOUND with sqLEN = %d\n", ft_sqlen(grp, grp->map));
+		ft_save(grp);
+	}
+	else if (!(grp->save))
+	{
+		//printf("NO_SAVE sqLEN = %d\n", ft_sqlen(grp, grp->map));
+		ft_save(grp);
+	}
+
 }
