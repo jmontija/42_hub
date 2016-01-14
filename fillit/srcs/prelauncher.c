@@ -33,14 +33,34 @@ void ft_get_map(group *grp)
 int		tetris_count(char *pack)
 {
 	int	i;
+	int j = 0;
 	int count;
 
 	i = -1;
 	count = 0;
 	while (pack[++i])
-	{
+	{	
+		j++;
+		dot++;
+		if (pack[i] != '.' && pack[i] != '#' && pack[i] != '\n')
+			ft_iserror();
+		if (pack[i] == '\n')
+		{
+			if (j > 5)
+				ft_iserror();
+			j = 0;
+		}
 		if (pack[i] == '\n' && (i + 1 - count) % 5 != 0)
+		{
+			if (dot > 26)
 			count++;
+			j = 0;
+			if (pack[i + 1] != '.' && pack[i + 1] != '#')
+				ft_iserror();
+		}
+		/*else 
+			ft_iserror();*/
+
 	}
 	count++;
 	return (count);
@@ -68,10 +88,7 @@ void	pre_launcher(int argc, char **argv)
 	char 	*pack;
 
 	if (!(pack = ft_orc(argv[1])) || argc != 2)
-	{
-		ft_putstr("error\n");
-		return ;
-	}
+		ft_iserror();
 	grp = init();
 	grp->size = tetris_count(pack);
 	grp->mapLEN = 12;
