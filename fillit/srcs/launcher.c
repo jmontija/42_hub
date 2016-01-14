@@ -60,13 +60,13 @@ void	fill_grp(char *pack, group *grp, int *p)
 	tetrim *curr;
 
 	i = -1;
-	j = -1;
-	x = 0;
 	y = 0;
 	curr = grp->curr;
 	curr->shape = (char **)malloc(sizeof(char *) * 5);
 	while (++i < 4)
 	{
+		x = 0;
+		j = -1;
 		curr->shape[i] = (char *)malloc(sizeof(char) * 5);
 		while (++j < 5)
 		{
@@ -89,11 +89,51 @@ void	fill_grp(char *pack, group *grp, int *p)
 		curr->shape[y][x] = '\0';
 		if (x != 0)
 			y++;
-		x = 0;
-		j = -1;
 	}
 	*p += 1;
 	coord_xy(grp, curr->shape, y);
+}
+
+int	ft_check_tetrim(tetrim *curr)
+{
+	int i = -1;
+	int j;
+	int count;
+
+	count = 0;
+	if (curr != NULL)
+	{
+		while (curr->shape[++i])
+		{
+			j = -1;
+			while (curr->shape[i][++j])
+			{
+				if (ft_isalpha(curr->shape[i][j]))
+				{
+					if (curr->shape[i][j + 1] && ft_isalpha(curr->shape[i][j + 1]))
+					{
+						count++;
+					}
+					if (j > 0 && curr->shape[i][j - 1] && ft_isalpha(curr->shape[i][j - 1]))
+					{
+						count++;
+					}
+					if (i > 0 && curr->shape[i - 1][j] && ft_isalpha(curr->shape[i - 1][j]))
+					{
+						count++;
+					}
+					if (i < curr->y - 1 && curr->shape[i + 1][j] && ft_isalpha(curr->shape[i + 1][j]))
+					{
+						count++;
+					}
+				}
+			}
+		}
+	}
+	//printf("ID = %c COUNT = %d\n", curr->id, count);
+	if (count == 6 || (count == 8 && (curr->x == curr->y) && (!count_dot_x(curr->shape[0])|| !count_dot_x(curr->shape[1]))))
+		return (1);
+	return (0);
 }
 
 void	launcher(group *grp, char *pack)
@@ -107,6 +147,8 @@ void	launcher(group *grp, char *pack)
 	{
 		insert(grp, ('A' + i));
 		fill_grp(pack, grp, &p);
+		if(!ft_check_tetrim(grp->curr))
+			ft_iserror();
 	}
 	ft_tracking(grp, grp->premier);
 }

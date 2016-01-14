@@ -54,7 +54,7 @@ char	*ft_orc(char *file)
 
 	if (!(pack = (char *)malloc(sizeof(char) * BUFFER)))
 		return (NULL);
-	if (!(fd = open(file, O_RDONLY)))
+	if (!(fd = open(file, O_RDONLY)) || fd < 1)
 		return (NULL);
 	if (!(ret = read(fd, pack, BUFFER)))
 		return (NULL);

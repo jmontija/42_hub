@@ -11,6 +11,13 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void    ft_iserror()
+{
+    ft_putstr("error\n");
+    exit(0);
+}
+
 int count_dot_x(char *line)
 {
     int i;

@@ -106,7 +106,7 @@ void 	ft_tracking(group *grp, tetrim *curr)
 	if (curr->id == 'A')
 	{
 		show_tab("CURR_SAVE", grp->save);
-		//show_tetrim(grp);
+		show_tetrim(grp);
 		exit(0);
 	}
 }

@@ -19,17 +19,17 @@ int		ft_sqlen(group *grp, char **map)
 	int y = 0;
 	while (map[++i])
 	{
-		if (count_dot_x(map[i]) == grp->mapLEN)
+		/*if (count_dot_x(map[i]) == grp->mapLEN)
 		{
 			free(map[i]);
 			map[i] = NULL;
 		}
 		else
-		{
-			if (x < (int)ft_strlen(map[i]))
-				x = (int)ft_strlen(map[i]);
-			y++;
-		}
+		{*/
+		if (grp && x < (int)ft_strlen(map[i]))
+			x = (int)ft_strlen(map[i]);
+		y++;
+		//}
 	}
 	if (x > y)
 		return (x);
@@ -76,7 +76,7 @@ void	ft_save_check(group *grp)
 {
 	int i = -1;
 
-	if (grp->save && ft_allused(grp) && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
+	if (grp->save && (ft_sqlen(grp, grp->map) < ft_sqlen(grp, grp->save)))
 	{
 		while (grp->save[++i])
 		{
@@ -90,6 +90,9 @@ void	ft_save_check(group *grp)
 		ft_save(grp);
 	}
 	else if (!(grp->save))
+	{
+		printf("FIRST_SQ with sqLEN = %d\n", ft_sqlen(grp, grp->map));
 		ft_save(grp);
+	}
 
 }

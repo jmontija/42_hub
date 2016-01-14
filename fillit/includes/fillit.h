@@ -43,6 +43,7 @@ typedef struct  group
 }				group;
 
 group 	*init();
+void	ft_iserror();
 void	pre_launcher(int argc, char **argv);
 void	launcher(group *_group, char *pack);
 void 	insert(group *grp, char id);
