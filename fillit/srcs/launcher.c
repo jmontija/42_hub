@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 18:53:11 by julio             #+#    #+#             */
-/*   Updated: 2016/01/09 18:32:12 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/15 21:05:22 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void coord_xy(group *grp, char **shape, int y)
 	shape[i] = NULL;
 	grp->curr->y = y;
 }
+
 int getdiez(char *pack)
 {
 	int i;
@@ -99,8 +100,10 @@ int	ft_check_tetrim(tetrim *curr)
 	int i = -1;
 	int j;
 	int count;
+	int alph;
 
 	count = 0;
+	alph = 0;
 	if (curr != NULL)
 	{
 		while (curr->shape[++i])
@@ -110,28 +113,22 @@ int	ft_check_tetrim(tetrim *curr)
 			{
 				if (ft_isalpha(curr->shape[i][j]))
 				{
+					alph++;
 					if (curr->shape[i][j + 1] && ft_isalpha(curr->shape[i][j + 1]))
-					{
 						count++;
-					}
 					if (j > 0 && curr->shape[i][j - 1] && ft_isalpha(curr->shape[i][j - 1]))
-					{
 						count++;
-					}
 					if (i > 0 && curr->shape[i - 1][j] && ft_isalpha(curr->shape[i - 1][j]))
-					{
 						count++;
-					}
 					if (i < curr->y - 1 && curr->shape[i + 1][j] && ft_isalpha(curr->shape[i + 1][j]))
-					{
 						count++;
-					}
 				}
 			}
 		}
 	}
-	//printf("ID = %c COUNT = %d\n", curr->id, count);
-	if (count == 6 || (count == 8 && (curr->x == curr->y) && (!count_dot_x(curr->shape[0])|| !count_dot_x(curr->shape[1]))))
+	if ( alph == 4 &&
+		(count == 6 || (count == 8 && (curr->x == curr->y) && (!count_dot_x(curr->shape[0])&&
+		!count_dot_x(curr->shape[1])))))
 		return (1);
 	return (0);
 }

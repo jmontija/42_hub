@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 19:15:21 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/09 18:31:52 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/15 21:05:24 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,53 @@ void ft_get_map(group *grp)
 int		tetris_count(char *pack)
 {
 	int	i;
-	int j = 0;
+	int valid;
+	int dot_x = 0;
 	int count;
 
 	i = -1;
+	valid = 0;
 	count = 0;
 	while (pack[++i])
 	{	
-		j++;
-		dot++;
-		if (pack[i] != '.' && pack[i] != '#' && pack[i] != '\n')
+		dot_x++;
+		valid++;
+		if (pack[i] == '.' || pack[i] == '#' || pack[i] == '\n')
+		{
+			if (pack[i] == '\n')
+			{
+				if (dot_x > 5)
+				{
+					printf("LIGNE TROP LONGUE\n");
+					ft_iserror();
+				}
+				dot_x = 0;
+			}
+			if (pack[i] == '\n' && (i + 1 - count) % 5 != 0)
+			{
+				if (pack[i + 1] != '.' && pack[i + 1] != '#')
+				{
+					printf("NEXT TETRIM CHECK");
+					ft_iserror();
+				}
+				printf("tetrim_size %d: %d\n",count, valid);
+				if (valid != 21)
+					ft_iserror();
+				valid = 0;
+				count++;
+			}
+		}
+		else if (pack[i] != '.' && pack[i] != '#' && pack[i] != '\n')
+		{
+			printf("%c: INVALID CHAR\n", pack[i]);
 			ft_iserror();
-		if (pack[i] == '\n')
-		{
-			if (j > 5)
-				ft_iserror();
-			j = 0;
 		}
-		if (pack[i] == '\n' && (i + 1 - count) % 5 != 0)
-		{
-			if (dot > 26)
-			count++;
-			j = 0;
-			if (pack[i + 1] != '.' && pack[i + 1] != '#')
-				ft_iserror();
-		}
-		/*else 
-			ft_iserror();*/
-
 	}
 	count++;
+	if (valid + 1 != 21)
+		ft_iserror();
+	printf("tetrim_size %d: %d\n",count, valid + 1);
+	printf("COUNT=%d\n", count);
 	return (count);
 }
 
