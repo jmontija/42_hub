@@ -66,7 +66,6 @@ void	ft_rm_tetrim(group *grp, tetrim *curr)
 	int y;
 
 	y = -1;
-	//show_tab("REMOVE", grp->map);
 	while (++y < grp->mapLEN)
 	{
 		x = -1;
@@ -74,32 +73,23 @@ void	ft_rm_tetrim(group *grp, tetrim *curr)
 			if (grp->map[y][x] == curr->id)
 				grp->map[y][x] = '.';
 	}
-	/*int	i;
-	int j;
-
-	i = -1;
-	while (curr->shape[++i] && grp->map[pos_y + i])
-	{
-		j = -1;
-		while (curr->shape[i][++j] && grp->map[pos_y + i][pos_x + j])
-		{
-			grp->map[pos_y + i][pos_x + j] = '.';
-		}
-	}*/
 	curr->used = false;
 }
 
-void		ft_check(group *grp, tetrim *curr, int x, int y)
+int		ft_check(group *grp, tetrim *curr, int x, int y)
 {
 	int dot_rest;
 	dot_rest = count_dot_x(&grp->map[y][x]);
-	if (curr != NULL && curr->x <= dot_rest && !curr->used && ft_try(grp, curr, x, y))
+	if (curr && curr->x > dot_rest)
+		return (dot_rest);
+	else if (curr && !curr->used && ft_try(grp, curr, x, y))
 	{
 		ft_add_tetrim(grp, curr, x, y);
 		ft_tracking(grp, curr->next);
 		//show_tab("BEFORE REMOVE", grp->map);
 		ft_rm_tetrim(grp, curr);
 	}
+	return (0);
 }
 
 void 	ft_tracking(group *grp, tetrim *curr)
@@ -107,24 +97,18 @@ void 	ft_tracking(group *grp, tetrim *curr)
 	int x;
 	int y = -1;
 
-	/*if (curr != NULL)
-	{*/
-		if (ft_allused(grp))
-			ft_save_check(grp);
-		while (++y < grp->mapLEN)
-		{
-			x = -1;
-			while (++x < grp->mapLEN)
-				ft_check(grp, curr, x, y);
-		}
-		if (curr->id == 'A')
-		{
-			show_tab("CURR_SAVE", grp->save);
-			//show_tetrim(grp);
-			exit(0);
-		}
-	/*}
-	else
-		show_tab("CURR_SAVE", grp->save);	*/
+	if (ft_allused(grp))
+		ft_save_check(grp);
+	while (++y < grp->mapLEN)
+	{
+		x = -1;
+		while (++x < grp->mapLEN)
+			x += ft_check(grp, curr, x, y);	
+	}
+	if (curr->id == 'A')
+	{
+		show_tab("CURR_SAVE", grp->save);
+		exit(0);
+	}
 }
 
