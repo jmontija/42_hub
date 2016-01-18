@@ -6,13 +6,13 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/27 16:46:43 by jmontija          #+#    #+#             */
-/*   Updated: 2016/01/03 20:06:41 by julio            ###   ########.fr       */
+/*   Updated: 2016/01/16 14:29:52 by vbraeke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	pre_launcher(argc, argv);
 	return (0);
