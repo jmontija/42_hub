@@ -4,4 +4,5 @@ git config user.email "julien.montijano@gmail.com"
 git config push.default "simple"
 git add -A
 git commit -m "update"
-git push origin master
+git remote add origin https://github.com/jmontija/fillit.git
+git push -u origin master
